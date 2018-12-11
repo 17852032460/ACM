@@ -41,13 +41,14 @@ For first test case, n = $2^1$ ∗$3^1$ = 6, and the answer is (φ(1)∗n/1+φ(2
 然后这题要求解的式子是$\sum\nolimits_{d|n}φ(d) * n/d$，也可以这样写$\sum\nolimits_{d|n}\frac{φ(d)}{d} * n$，而$n= \prod\nolimits^{m}_{i=1}p_i^{q_i}$，这两个都是积性函数，带进去得到$\sum\nolimits_{(d|\prod\nolimits^{m}_{i=1}p_i^{q_i})}\frac{φ(d)}{d} * （\prod\nolimits^{m}_{i=1}p_i^{q_i}）$也就是一个积性函数，利用积性函数的性质就能得到原式=$\prod_{i=1}^m(\sum\nolimits_{d|p_i^{q_i}}\phi(d)*\frac{p_i^{q_i}}{d})$其中$d|p_i^{q_i}$就是$p^0,p^1\cdots p^q$。因此，我们只需要把这m对$p_i$、$q_i$每一对单独求一下题目给的式子，然后把它们累乘起来就好了。剩下的就要推出对于每一对$p_i，q_i$应该怎么求。  
 
 **设$x=p^q$**
-
-$$\sum\nolimits_{d|x}\phi(d)*\frac{x}{d}=\phi(1)*x+\sum\nolimits_{i=1}^q\phi(p^i)*\frac{p^q}{p^i}//将1单独拿出来$$
-$$=p^q + \sum\nolimits^q_{i=1}(p-1)p^{i-1}\frac{p^q}{p^i}//欧拉函数展开$$
-$$=p^q + (p-1)p^q\sum\nolimits_{i=1}^q \frac{p^{i-1}}{p^i}//常数提出来$$
-$$=p^q+(p-1)p^q\sum\nolimits_{i=1}^q\frac{1}{p}//后面就是约分化简$$
-$$=p^q + (p-1)\,p^q\,\frac{q}{p}$$
-$$=p^q(1+(p-1)\frac{q}{p})$$
-$$=p^{q-1}(p+pq-q)$$
+```math
+\sum\nolimits_{d|x}\phi(d)*\frac{x}{d}=\phi(1)*x+\sum\nolimits_{i=1}^q\phi(p^i)*\frac{p^q}{p^i}//将1单独拿出来
+=p^q + \sum\nolimits^q_{i=1}(p-1)p^{i-1}\frac{p^q}{p^i}//欧拉函数展开
+=p^q + (p-1)p^q\sum\nolimits_{i=1}^q \frac{p^{i-1}}{p^i}//常数提出来
+=p^q+(p-1)p^q\sum\nolimits_{i=1}^q\frac{1}{p}//后面就是约分化简
+=p^q + (p-1)\,p^q\,\frac{q}{p}
+=p^q(1+(p-1)\frac{q}{p})
+=p^{q-1}(p+pq-q)
+```
   
 推到这里答案就显而易见了，只需要把题目中给的所有$p_i$，$q_i$带进去乘起来就好了。
